@@ -56,7 +56,6 @@ else
 app.UseCors("AllowOrigin");
 
 app.UseDefaultFiles();
-app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 app.UseRouting();
