@@ -1,1 +1,15 @@
-<p>login works!</p>
+<div>
+    <h2>login</h2>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value.username, loginForm.value.password)">
+      <div>
+        <label for="username">User name:</label>
+        <input type="text" id="username" name="username" ngModel required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" ngModel required pattern="^\S{8,}$">
+      </div>
+      <button [disabled]="loginForm.invalid" type="submit">Submit</button>
+    </form>
+  </div>
+  

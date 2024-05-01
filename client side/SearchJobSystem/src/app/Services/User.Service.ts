@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Observable, Observer } from 'rxjs';
 import { User } from '../Models/User';
 
 
@@ -16,13 +15,15 @@ export class UserService {
     UserList: User[] = []
 
     public GetUserList() {
-        return this.UserList
+        return this.UserList;
     }
 
     GetUsers() {
-        this.http.get('https://localhost:7231/User').subscribe((res: any) => this.UserList = res)
-    }
-
+        this.http.get('https://localhost:7231/User').subscribe((res: any) => {
+          this.UserList = res;
+        });
+      }
+      
     addUser(user: User) {
         this.UserList.push(user)
         this.http.post('https://localhost:7231/User', { body: user }).subscribe(res => { })

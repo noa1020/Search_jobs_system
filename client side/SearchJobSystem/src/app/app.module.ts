@@ -17,6 +17,11 @@ import { AddJobComponent } from './components/job/add-job/add-job.component';
 import { UpdateJobComponent } from './components/job/update-job/update-job.component';
 import { DeleteJobComponent } from './components/job/delete-job/delete-job.component';
 import { ShowJobComponent } from './components/job/show-job/show-job.component';
+import { FormsModule, NgForm } from '@angular/forms';
+import { AuthService } from './Services/Auth.service';
+import { UserService } from './Services/User.Service';
+import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,9 +44,15 @@ import { ShowJobComponent } from './components/job/show-job/show-job.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    Router,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
