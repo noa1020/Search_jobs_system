@@ -8,10 +8,11 @@ import { AuthService } from '../../Services/Auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private authService: AuthService,private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
-  login(username: string, password: string): void {
-    if (this.authService.login(username, password)) {
+  async login(username: string, password: string): Promise<void> {
+    const isLoggedIn = await this.authService.Login(username, password);
+    if (isLoggedIn) {
       this.router.navigate(['/home']);
     }
     else {

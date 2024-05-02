@@ -6,21 +6,19 @@ import { User } from '../Models/User';
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
-  login(username: string, password: string): boolean {
-    const user= this.authenticate(username, password);
-    if (user) {
-        localStorage.setItem("user", JSON.stringify(user));
-        return true;
-    } else {
-        return false;
-    }
+  async Login(username: string, password: string): Promise<boolean> {
+    return new Promise<boolean>((resolve) => {
+      let flag = false;
+      this.userService.GetUser(username, password).subscribe((user: User | null) => {
+        if (user !== null) {
+          localStorage.setItem("user", JSON.stringify(user));
+          flag = true;
+        }
+        resolve(flag);
+      });
+    });
   }
+}  
 
-  authenticate(username: string, password: string): User | undefined {
-    const userList = this.userService.GetUserList();
-    const user = userList.find(u => u.UserName === username && u.Password === password);
-    return user; 
-  }
-}

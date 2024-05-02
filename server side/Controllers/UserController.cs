@@ -34,6 +34,20 @@ namespace JobSearch.Controllers
             return myUser;
         }
 
+        //Get user by user name and password.
+        [Route("Login")]
+        [HttpGet]
+        public async Task<ActionResult<User?>> Login(string userName, string password)
+        {
+            User? myUser = await userService.Login(userName, password);
+            if (myUser == null)
+            {
+                return NotFound();
+            }
+            return myUser;
+        }
+
+
         //Add new user.
         [HttpPost]
         public async Task<IActionResult> Add(User newUser)

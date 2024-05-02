@@ -32,6 +32,15 @@ namespace JobSearch.Data
             if (user == null) return null;
             return user;
         }
+
+        //Get user by user name and password from the datbase
+        public async Task<User?> Login(string userName, string password)
+        {
+            User? user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userName && u.Password == password);
+            if (user == null) return null;
+            return user;
+        }
+
         //Add new user to the datbase
         public async Task<bool> AddUser(User newUser)
         {
