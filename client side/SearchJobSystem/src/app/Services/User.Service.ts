@@ -18,7 +18,9 @@ export class UserService {
                     if (error.status === 404) {
                         return of(null);
                     }
+                    else{
                     return throwError(error);
+                    }
                 })
             );
     }

@@ -5,7 +5,7 @@
       <label for="username">User name:</label>
       <input type="text" id="username" name="username" ngModel required>
       <div
-        *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].touched && !loginForm.controls['username'].value">
+        *ngIf="loginForm.controls['username']?.invalid && loginForm.controls['username'].touched && !loginForm.controls['username'].value">
         <span style="color: red;">User name is missing.</span>
       </div>
     </div>
@@ -13,7 +13,7 @@
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" ngModel required pattern="^\S{8,}$">
       <div
-        *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+        *ngIf="loginForm.controls['password']?.invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
         <span style="color: red;">Password must be at least 8 characters long and not contain spaces.</span>
       </div>
     </div>
