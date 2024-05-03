@@ -22,7 +22,7 @@ export class JobService {
         this.http.get('https://localhost:7231/Job').subscribe((res: any) => this.JobList = res)
     }
 
-    addUser(job: Job) {
+    addJob(job: Job) {
         this.JobList.push(job)
         this.http.post('https://localhost:7231/Job', { body: job }).subscribe(res => { })
     }

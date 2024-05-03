@@ -9,7 +9,6 @@ import { AuthService } from '../../Services/Auth.service';
 })
 export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) { }
-
   async login(username: string, password: string): Promise<void> {
     const isLoggedIn = await this.authService.Login(username, password);
     if (isLoggedIn) {

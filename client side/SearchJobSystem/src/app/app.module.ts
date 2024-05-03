@@ -22,6 +22,8 @@ import { AuthService } from './Services/Auth.service';
 import { UserService } from './Services/User.Service';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { JobService } from './Services/Job.Service';
+import { FieldJobService } from './Services/FieldJob.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     AuthService,
     Router,
-    UserService
+    UserService,
+    JobService,
+    FieldJobService
   ],
   bootstrap: [AppComponent]
 })
