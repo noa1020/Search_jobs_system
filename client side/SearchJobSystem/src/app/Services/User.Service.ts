@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { User } from '../Models/User';
+import { User } from '../models/user.model';
 import { Observable, catchError, of, tap, throwError } from 'rxjs';
 
 

@@ -18,12 +18,12 @@ import { UpdateJobComponent } from './components/job/update-job/update-job.compo
 import { DeleteJobComponent } from './components/job/delete-job/delete-job.component';
 import { ShowJobComponent } from './components/job/show-job/show-job.component';
 import { FormsModule, NgForm } from '@angular/forms';
-import { AuthService } from './Services/Auth.service';
-import { UserService } from './Services/User.Service';
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { JobService } from './Services/Job.Service';
-import { FieldJobService } from './Services/FieldJob.service';
+import { JobService } from './services/job.service';
+import { JobFieldService } from './services/jobField.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import { FieldJobService } from './Services/FieldJob.service';
     Router,
     UserService,
     JobService,
-    FieldJobService
+    JobFieldService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,1 +1,7 @@
-<p>show-job works!</p>
+<div class="job">
+    <h2>{{ job?.jobName }}</h2>
+    <p><strong>Hours Scope:</strong> {{ job?.houresScope }}</p>
+    <p><strong>Area:</strong> {{ job?.area }}</p>
+    <p><strong>Requirements:</strong> {{ job?.requirements?.join(', ') }}</p>
+    <p><strong>Home Working:</strong> {{ job?.homeWorking ? 'Yes' : 'No' }}</p>
+</div>

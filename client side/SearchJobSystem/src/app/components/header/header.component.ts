@@ -1,6 +1,6 @@
-import { User } from '../../Models/User';
-import { FieldJob } from '../../Models/FieldJob';
-import { FieldJobService } from '../../Services/FieldJob.service';
+import { User } from '../../models/user.model';
+import { JobField } from '../../models/jobField.models';
+import { JobFieldService } from '../../services/jobField.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,20 +12,17 @@ import { Component, OnInit } from '@angular/core';
 
 export class HeaderComponent implements OnInit {
   user!: User;
-  CVsNumber: number | undefined ;
-  fieldJobName: string | undefined;
-  constructor(private fieldJobService: FieldJobService, private router: Router) { }
+  CVsNumber: number | undefined;
+  jobFieldName: string | undefined;
+  jobField?: JobField;
+  constructor(private jobFieldService: JobFieldService, private router: Router) { }
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("user") || '{}');
     this.CVsNumber = this.user.cVsSentCount;
 
-    this.getFieldJobDetails();
+    this.getJobFieldDetails();
   }
-  getFieldJobDetails() {
-    this.fieldJobService.GetFieldJobById(this.user.jobFieldId).subscribe((fieldJob: FieldJob | null) => {
-      if (fieldJob !== null) {
-        this.fieldJobName = fieldJob.jobFieldName;
-      }
-    });
+  getJobFieldDetails() {
+    this.jobFieldName = this.jobFieldService.getJobFieldById(this.user.jobFieldId)?.jobFieldName;
   }
 }

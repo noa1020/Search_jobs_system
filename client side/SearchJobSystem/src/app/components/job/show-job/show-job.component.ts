@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Job } from '../../../models/job.model';
 
 @Component({
   selector: 'app-show-job',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './show-job.component.scss'
 })
 export class ShowJobComponent {
+  @Input() job: Job | undefined;
+
+  constructor() { }
 
 }
