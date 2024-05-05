@@ -26,7 +26,7 @@ export class UserService {
     }
 
     AddUser(user: User) {
-        this.http.post('https://localhost:7231/User', { body: user }).subscribe(res => { })
+        this.http.post('https://localhost:7231/User', { body: user }).subscribe(res => { });
     }
 
 

@@ -12,7 +12,9 @@ export class JobFieldService {
     private jobFieldsUrl = 'https://localhost:7231/Jobfield';
     jobFieldList: JobField[] = []
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+
+    }
 
     public getJobFields(): Observable<JobField[]> {
         if (this.jobFieldList.length === 0) {
@@ -32,6 +34,7 @@ export class JobFieldService {
     }
 
     getJobFieldById(jobFieldId: number): JobField | undefined {
+        console.log(this.jobFieldList);
         return this.jobFieldList.find(jobField => jobField.jobFieldId === jobFieldId);
     }
 
