@@ -11,7 +11,7 @@ export class AuthService {
   async Login(username: string, password: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       let flag = false;
-      this.userService.GetUser(username, password).subscribe((user: User | null) => {
+      this.userService.getUser(username, password).subscribe((user: User | null) => {
         if (user !== null) {
           localStorage.setItem("user", JSON.stringify(user));
           flag = true;

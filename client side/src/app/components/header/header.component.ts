@@ -3,6 +3,7 @@ import { JobField } from '../../models/jobField.models';
 import { JobFieldService } from '../../services/jobField.service';
 import { Router } from '@angular/router';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -17,11 +18,16 @@ export class HeaderComponent implements OnInit {
   jobField?: JobField;
   @Output() jobFieldLinkClicked: EventEmitter<number|undefined > = new EventEmitter<number|undefined>();
 
-  constructor(private jobFieldService: JobFieldService, private router: Router) { }
+  constructor(private jobFieldService: JobFieldService,private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("user") || '{}');
     this.CVsNumber = this.user.cVsSentCount;
+
+    this.userService.userUpdated.subscribe((updatedUser: User) => {
+      this.CVsNumber = updatedUser.cVsSentCount;
+    });
+
     this.getJobFieldDetails();
   }
 

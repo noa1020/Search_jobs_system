@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { User } from '../models/user.model';
-import { Observable, catchError, of, tap, throwError } from 'rxjs';
+import { Observable, Subject, catchError, of, tap, throwError } from 'rxjs';
+import { json } from 'express';
 
 
 @Injectable({
@@ -9,9 +10,12 @@ import { Observable, catchError, of, tap, throwError } from 'rxjs';
 })
 
 export class UserService {
+    
+    userUpdated = new Subject<User>();
+
     constructor(private http: HttpClient) { }
 
-    GetUser(userName: string, password: string): Observable<User | null> {
+    getUser(userName: string, password: string): Observable<User | null> {
         return this.http.get<User>(`https://localhost:7231/User/Login?userName=${encodeURIComponent(userName)}&password=${encodeURIComponent(password)}`)
             .pipe(
                 catchError(error => {
@@ -25,9 +29,13 @@ export class UserService {
             );
     }
 
-    AddUser(user: User) {
+    addUser(user: User) {
         this.http.post('https://localhost:7231/User', { body: user }).subscribe(res => { });
     }
 
-
+    updateUser(user:User){
+        this.http.put('https://localhost:7231/User', user).subscribe(res => { });
+        localStorage.setItem("user", JSON.stringify(user));
+        this.userUpdated.next(user);
+    }   
 }

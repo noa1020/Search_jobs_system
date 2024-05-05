@@ -30,11 +30,10 @@ export class JobFieldService {
             map(jobs => {
                 this.jobFieldList = jobs;
                 return jobs;
-
             })
         );
-
     }
+    
     getJobFieldById(jobFieldId: number): Observable<JobField | undefined> {
         return this.getJobFields().pipe(
             map((jobFields: JobField[]) => jobFields.find(jobField => jobField.jobFieldId === jobFieldId))
