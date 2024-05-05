@@ -1,6 +1,6 @@
 <header class="user-info">
     <div>👤: <span id="username">{{user.userName}}</span></div>
-    <div>job field: <a href="#" id="job-field">{{jobFieldName}}</a></div>
+    <div>job field: <a  id="job-field" (click)="onJobFieldLinkClick()">{{jobFieldName}}</a></div>
     <div>The number of CVs sent: <span id="resumes-count">{{CVsNumber}}</span></div>
     <a href="login"><img src="../../../favicon.ico"></a>
 </header>
