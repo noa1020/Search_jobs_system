@@ -68,8 +68,8 @@ namespace JobSearch.Services
             }
             try
             {
-                ValidationService.IsValidJob(newJob);
                 UpdateJobProperties(existingJob, newJob);
+                ValidationService.IsValidJob(existingJob);
                 await _repository.UpdateJob(existingJob);
                 return true;
             }

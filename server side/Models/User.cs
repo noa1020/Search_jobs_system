@@ -15,5 +15,7 @@ public class User
     [Required]
     [ForeignKey("JobFields")]
     public int? JobFieldId { get; set; }
-    public int? CVsSentCount{ get; set; } = 0;
+    public int? CVsSentCount { get; set; } = 0;
+    public List<int>? CVsSentIdsJobs  { get; set; }
+
 }

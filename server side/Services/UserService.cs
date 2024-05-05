@@ -31,9 +31,9 @@ namespace JobSearch.Services
         }
 
         //Get user by  user name and password
-        public async Task<User?> Login(string userName,string password)
+        public async Task<User?> Login(string userName, string password)
         {
-            return await _repository.Login(userName,password);
+            return await _repository.Login(userName, password);
         }
 
         // Add a new user to the database
@@ -74,8 +74,8 @@ namespace JobSearch.Services
             }
             try
             {
-                ValidationService.IsValidUser(newUser);
                 UpdateUserProperties(existingUser, newUser);
+                ValidationService.IsValidUser(existingUser);
                 await _repository.UpdateUser(existingUser);
                 return true;
             }
@@ -111,7 +111,8 @@ namespace JobSearch.Services
             existingUser.UserName = newUser.UserName ?? existingUser.UserName;
             existingUser.Password = newUser.Password ?? existingUser.Password;
             existingUser.JobFieldId = newUser.JobFieldId ?? existingUser.JobFieldId;
-            existingUser.CVsSentCount = newUser.CVsSentCount ?? existingUser.CVsSentCount;            
+            existingUser.CVsSentCount = newUser.CVsSentCount ?? existingUser.CVsSentCount;
+            existingUser.CVsSentIdsJobs = newUser.CVsSentIdsJobs ?? existingUser.CVsSentIdsJobs;
         }
     }
 }
