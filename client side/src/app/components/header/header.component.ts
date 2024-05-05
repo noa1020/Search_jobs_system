@@ -23,6 +23,8 @@ export class HeaderComponent implements OnInit {
     this.getJobFieldDetails();
   }
   getJobFieldDetails() {
-    this.jobFieldName = this.jobFieldService.getJobFieldById(this.user.jobFieldId)?.jobFieldName;
-  }
+    this.jobFieldService.getJobFieldById(this.user.jobFieldId).subscribe((jobField: JobField | undefined) => {
+        this.jobFieldName = jobField?.jobFieldName;
+    });
+}
 }
