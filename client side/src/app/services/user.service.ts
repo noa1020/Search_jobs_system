@@ -12,7 +12,7 @@ import { json } from 'express';
 export class UserService {
     
     userUpdated = new Subject<User>();
-
+    user!: User;
     constructor(private http: HttpClient) { }
 
     getUser(userName: string, password: string): Observable<User | null> {
@@ -38,4 +38,12 @@ export class UserService {
         localStorage.setItem("user", JSON.stringify(user));
         this.userUpdated.next(user);
     }   
+    addJob(idJob:number ){
+        this.user = JSON.parse(localStorage.getItem("user") || '{}');
+        this.user.cVsSentCount += 1;
+        console.log(this.user.cVsSentIdsJobs);
+        
+        this.user.cVsSentIdsJobs.push(idJob);
+        this.updateUser(this.user);
+    }
 }

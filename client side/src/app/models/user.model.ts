@@ -1,7 +1,8 @@
-export interface User{
-    userId:number
-    userName:string
-    password:string
-    jobFieldId:number
-    cVsSentCount:number
+export interface User {
+    userId: number
+    userName: string
+    password: string
+    jobFieldId: number
+    cVsSentCount: number
+    cVsSentIdsJobs: number[]
 }

@@ -12,7 +12,6 @@ import { UserService } from '../../../services/user.service';
 })
 export class ShowJobComponent implements OnInit {
   @Input() job: Job | undefined;
-  user!: User;
   jobFieldName?: string;
   showDetails: boolean = false;
 
@@ -28,10 +27,8 @@ export class ShowJobComponent implements OnInit {
   toggleDetails() {
     this.showDetails = !this.showDetails;
   }
-  SentCV() {
-    this.user = JSON.parse(localStorage.getItem("user") || '{}');
-    this.user.cVsSentCount += 1;
-    this.userService.updateUser(this.user);
+  SentCV(jobId:number  ) {
+    this.userService.addJob(jobId);
     alert("CV sent successfuly");
   }
 }
