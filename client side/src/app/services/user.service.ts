@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { User } from '../models/user.model';
-import { Observable, Subject, catchError, of, tap, throwError } from 'rxjs';
+import { Observable, Subject, catchError, map, of, tap, throwError } from 'rxjs';
 import { json } from 'express';
 
 
@@ -10,7 +10,7 @@ import { json } from 'express';
 })
 
 export class UserService {
-    
+
     userUpdated = new Subject<User>();
     user!: User;
     constructor(private http: HttpClient) { }
@@ -22,27 +22,32 @@ export class UserService {
                     if (error.status === 404) {
                         return of(null);
                     }
-                    else{
-                    return throwError(error);
+                    else {
+                        return throwError(error);
                     }
                 })
             );
     }
 
-    addUser(user: User) {
-        this.http.post('https://localhost:7231/User', { body: user }).subscribe(res => { });
+    addUser(user: User): Observable<any> {
+        if (user !== null) {
+            return this.http.post('https://localhost:7231/User', user).pipe(
+                map(() => true), 
+                catchError(error => of(error))
+            );
+        }
+        return of(false);
     }
-
-    updateUser(user:User){
+        
+    updateUser(user: User) {
         this.http.put('https://localhost:7231/User', user).subscribe(res => { });
         localStorage.setItem("user", JSON.stringify(user));
         this.userUpdated.next(user);
-    }   
-    addJob(idJob:number ){
+    }
+
+    addJobToUser(idJob: number) {
         this.user = JSON.parse(localStorage.getItem("user") || '{}');
         this.user.cVsSentCount += 1;
-        console.log(this.user.cVsSentIdsJobs);
-        
         this.user.cVsSentIdsJobs.push(idJob);
         this.updateUser(this.user);
     }

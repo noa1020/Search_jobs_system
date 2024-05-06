@@ -17,7 +17,7 @@ import { AddJobComponent } from './components/job/add-job/add-job.component';
 import { UpdateJobComponent } from './components/job/update-job/update-job.component';
 import { DeleteJobComponent } from './components/job/delete-job/delete-job.component';
 import { ShowJobComponent } from './components/job/show-job/show-job.component';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormGroup, FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
@@ -49,13 +49,15 @@ import { JobFieldService } from './services/jobField.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AuthService,
     Router,
     UserService,
     JobService,
-    JobFieldService
+    JobFieldService,
+    ReactiveFormsModule,
   ],
   bootstrap: [AppComponent]
 })

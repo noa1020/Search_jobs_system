@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) { }
+
   async login(username: string, password: string): Promise<void> {
     const isLoggedIn = await this.authService.Login(username, password);
     if (isLoggedIn) {
@@ -17,5 +18,9 @@ export class LoginComponent {
     else {
       alert("User not found");
     }
+  }
+
+  signUp(){
+    this.router.navigate(['/signup']);
   }
 }

@@ -1,0 +1,51 @@
+body {
+    padding-top: 150px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:disabled {
+        background-color: #b3b3b3;
+        cursor: not-allowed;
+    }
+}
+
+button:disabled:hover {
+    background-color: #767676;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Error message */
+div.error {
+    color: red;
+    font-size: 14px;
+}

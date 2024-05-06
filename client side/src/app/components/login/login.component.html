@@ -1,4 +1,5 @@
-<div>
+<body>
+  <div>
   <h2>login</h2>
   <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value.username, loginForm.value.password)">
     <div>
@@ -19,4 +20,6 @@
     </div>
     <button [disabled]="loginForm.invalid" type="submit">Submit</button>
   </form>
+  <button id="signup" (click)="signUp()"> Sign-up</button>
 </div>
+</body>
