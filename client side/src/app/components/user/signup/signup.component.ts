@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { JobField } from '../../models/jobField.models';
-import { JobFieldService } from '../../services/jobField.service';
-import { User } from '../../models/user.model';
+import { JobField } from '../../../models/jobField.models';
+import { JobFieldService } from '../../../services/jobField.service';
+import { User } from '../../../models/user.model';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-signup',

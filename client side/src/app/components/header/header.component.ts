@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   onEditProfileClick() {
-    throw new Error('Method not implemented.');
+    this.router.navigate(['/edit_user']);
   }
 
 

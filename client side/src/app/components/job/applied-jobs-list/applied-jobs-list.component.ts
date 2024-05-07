@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user.model';
-import { Job } from '../../models/job.model';
-import { JobService } from '../../services/job.service';
-import { UserService } from '../../services/user.service';
+import { User } from '../../../models/user.model';
+import { Job } from '../../../models/job.model';
+import { JobService } from '../../../services/job.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-applied-jobs-list',
