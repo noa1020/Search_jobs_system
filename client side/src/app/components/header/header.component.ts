@@ -1,8 +1,8 @@
 import { User } from '../../models/user.model';
 import { JobField } from '../../models/jobField.models';
 import { JobFieldService } from '../../services/jobField.service';
-import { Router } from '@angular/router';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -16,9 +16,8 @@ export class HeaderComponent implements OnInit {
   CVsNumber: number | undefined;
   jobFieldName: string | undefined;
   jobField?: JobField;
-  @Output() jobFieldLinkClicked: EventEmitter<number|undefined > = new EventEmitter<number|undefined>();
 
-  constructor(private jobFieldService: JobFieldService,private userService: UserService, private router: Router) { }
+  constructor(private jobFieldService: JobFieldService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("user") || '{}');
@@ -26,7 +25,6 @@ export class HeaderComponent implements OnInit {
     this.userService.userUpdated.subscribe((updatedUser: User) => {
       this.CVsNumber = updatedUser.cVsSentCount;
     });
-
     this.getJobFieldDetails();
   }
 
@@ -38,7 +36,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onJobFieldLinkClick(): void {
-    console.log(this.jobField?.jobFieldId);
-    this.jobFieldLinkClicked.emit(this.jobField?.jobFieldId);
+    this.router.navigate(['/home'], { queryParams: { fieldName: this.jobFieldName } });
   }
 }
