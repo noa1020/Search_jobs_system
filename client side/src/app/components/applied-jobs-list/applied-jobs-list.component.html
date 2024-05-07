@@ -1,0 +1,14 @@
+<app-header></app-header>
+<main style="text-align: center;">
+    <h2 style="color: #c52f2f; margin: 30px;">Jobs I Applied To: </h2>
+    <ul *ngIf="jobs && jobs.length > 0">
+        <div class="job-list">
+            <app-show-job *ngFor="let job of jobs" [job]="job" [aploiedJob]="true"></app-show-job>
+        </div>
+    </ul>
+    <div *ngIf="!jobs || jobs.length === 0" class="container">Oops! Looks like you haven't submitted your resume yet.
+        Why not take a look
+        at our available job listings?
+    </div>
+</main>
+<app-footer></app-footer>

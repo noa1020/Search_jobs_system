@@ -18,7 +18,7 @@ export class AuthService {
 
   constructor(private userService: UserService) { }
 
-  async Login(username: string, password: string): Promise<boolean> {
+  async login(username: string, password: string): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       let flag = false;
       this.userService.getUser(username, password).subscribe((user: User | null) => {

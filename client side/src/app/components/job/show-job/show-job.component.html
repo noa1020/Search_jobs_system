@@ -10,6 +10,5 @@
     <button (click)="toggleDetails()">
         {{ showDetails ? 'Close Details' : 'Show Details' }}
     </button>
-    <button (click)="SentCV(job?.jobId!)">Sent CV</button>
-
+    <button *ngIf="!aploiedJob" id="sentCVButton" (click)="SentCV(job?.jobId!)">Sent CV</button>
 </div>

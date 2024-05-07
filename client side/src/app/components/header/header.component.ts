@@ -23,7 +23,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("user") || '{}');
     this.CVsNumber = this.user.cVsSentCount;
-
     this.userService.userUpdated.subscribe((updatedUser: User) => {
       this.CVsNumber = updatedUser.cVsSentCount;
     });

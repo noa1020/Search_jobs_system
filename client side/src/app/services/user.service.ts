@@ -32,23 +32,26 @@ export class UserService {
     addUser(user: User): Observable<any> {
         if (user !== null) {
             return this.http.post('https://localhost:7231/User', user).pipe(
-                map(() => true), 
+                map(() => true),
                 catchError(error => of(error))
             );
         }
         return of(false);
     }
-        
+
     updateUser(user: User) {
         this.http.put('https://localhost:7231/User', user).subscribe(res => { });
         localStorage.setItem("user", JSON.stringify(user));
         this.userUpdated.next(user);
     }
 
-    addJobToUser(idJob: number) {
+    addJobToUser(idJob: number): boolean {
         this.user = JSON.parse(localStorage.getItem("user") || '{}');
+        if (this.user.cVsSentIdsJobs.indexOf(idJob) != -1)
+            return false;
         this.user.cVsSentCount += 1;
         this.user.cVsSentIdsJobs.push(idJob);
         this.updateUser(this.user);
+        return true;
     }
 }

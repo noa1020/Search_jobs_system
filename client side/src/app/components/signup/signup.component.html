@@ -1,8 +1,14 @@
 <body>
+    <button class="back-button" (click)="goBack()">➡️</button>
+    <h2>Sign-up</h2>
     <form [formGroup]="signupForm" (ngSubmit)="signUp()">
         <div>
             <label for="username">User name:</label>
-            <input id="username" type="text" formControlName="username" required>
+            <input id="username" type="text" formControlName="username" required pattern="^[a-zA-Z0-9\s+\-\/']+$">
+            <div
+                *ngIf="signupForm.controls['username']?.invalid && (signupForm.controls['username'].dirty || signupForm.controls['username'].touched)">
+                <span style="color: red;">Please enter valid password.</span>
+            </div>
         </div>
 
         <div>
@@ -12,7 +18,7 @@
                 </option>
             </select>
         </div>
-    
+
         <div>
             <label for="password">Password:</label>
             <input id="password" type="password" formControlName="password" required pattern="^\S{8,}$">

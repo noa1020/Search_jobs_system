@@ -24,6 +24,7 @@ import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { JobService } from './services/job.service';
 import { JobFieldService } from './services/jobField.service';
+import { AppliedJobsListComponent } from './components/applied-jobs-list/applied-jobs-list.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { JobFieldService } from './services/jobField.service';
     AddJobComponent,
     UpdateJobComponent,
     DeleteJobComponent,
-    ShowJobComponent
+    ShowJobComponent,
+    AppliedJobsListComponent
   ],
   imports: [
     BrowserModule,

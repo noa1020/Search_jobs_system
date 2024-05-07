@@ -12,6 +12,7 @@ import { UserService } from '../../../services/user.service';
 })
 export class ShowJobComponent implements OnInit {
   @Input() job: Job | undefined;
+  @Input() aploiedJob : boolean = false;
   jobFieldName?: string;
   showDetails: boolean = false;
 
@@ -27,8 +28,10 @@ export class ShowJobComponent implements OnInit {
   toggleDetails() {
     this.showDetails = !this.showDetails;
   }
-  SentCV(jobId:number  ) {
-    this.userService.addJobToUser(jobId);
-    alert("CV sent successfuly");
+  SentCV(jobId: number) {
+    if (this.userService.addJobToUser(jobId))
+      alert("CV sent successfuly.");
+    else
+    alert("You have already sent us a CV, please wait for a reply.");
   }
 }
