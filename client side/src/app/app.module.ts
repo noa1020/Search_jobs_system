@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JobService } from './services/job.service';
 import { JobFieldService } from './services/jobField.service';
 import { AppliedJobsListComponent } from './components/job/applied-jobs-list/applied-jobs-list.component';
-import { JobCardDirective } from './directivs/job-card.directive';
+import { JobCardDirective } from './directives/job-card.directive';
 
 @NgModule({
   declarations: [
