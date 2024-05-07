@@ -1,7 +1,11 @@
 <header class="user-info">
-    <div>👤: <span id="username">{{user.userName}}</span></div>
-    <div>job field: <a  id="job-field" (click)="onJobFieldLinkClick()">{{jobFieldName}}</a></div>
+    <div><button style="border: none; padding: 0;" (click)="toggleProfileOptions()">👤</button>:<span id="username">{{user.userName}}</span></div>
+    <div>job field: <a id="job-field" (click)="onJobFieldLinkClick()">{{jobFieldName}}</a></div>
     <div>The number of CVs sent: <span id="resumes-count">{{CVsNumber}}</span></div>
     <div><a href="/home/applied_jobs_list">My applied jobs list</a></div>
     <a href="home"><img src="../../../favicon.ico"></a>
 </header>
+<div id="profileOptions" *ngIf="showProfileOptions">
+    <button (click)="onEditProfileClick()">Edit Profile</button>
+    <button (click)="onLogoutClick()">Sign out </button><br>
+</div>

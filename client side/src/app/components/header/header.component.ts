@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   CVsNumber: number | undefined;
   jobFieldName: string | undefined;
   jobField?: JobField;
+  showProfileOptions: boolean = false;
 
   constructor(private jobFieldService: JobFieldService, private userService: UserService, private router: Router) { }
 
@@ -38,4 +39,17 @@ export class HeaderComponent implements OnInit {
   onJobFieldLinkClick(): void {
     this.router.navigate(['/home'], { queryParams: { fieldName: this.jobFieldName } });
   }
+
+  toggleProfileOptions() {
+    this.showProfileOptions = !this.showProfileOptions;
+  }
+  onLogoutClick() {
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+  }
+  onEditProfileClick() {
+    throw new Error('Method not implemented.');
+  }
+
+
 }

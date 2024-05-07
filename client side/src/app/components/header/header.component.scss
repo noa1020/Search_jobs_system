@@ -21,8 +21,8 @@
 .user-info a img {
     width: 80px;
     height: 80px;
-    border-radius: 50%; 
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); 
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .user-info a img:hover {
@@ -36,11 +36,34 @@
 #job-field {
     color: #007bff;
 }
+
 #job-field:hover {
     color: #0457af;
 }
 
-
 #resumes-count {
     font-weight: bold;
+}
+
+#profileOptions {
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-bottom: 2px solid #ccc;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 230px;
+}
+
+#profileOptions button {
+    color: black;
+    border: none;
+    padding: 8px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 210px;
+
+}
+
+#profileOptions button:hover {
+    text-decoration: underline;
 }
