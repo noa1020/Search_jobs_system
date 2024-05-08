@@ -39,9 +39,8 @@
             </div>
             <div>
                 <label for="requirements">Requirements:</label>
-                <input type="text" id="requirements" name="requirements" required maxlength="50">
-                <div *ngFor="let requirement of newJob.requirements; let i = index">
-                    <input type="text" name="requirement" [(ngModel)]="newJob.requirements[i]" required>
+                <div *ngFor="let requirement of newJob.requirements; let i = index; trackBy: trackByFn">
+                    <input type="text" name="requirement{{i}}" [(ngModel)]="newJob.requirements[i]" required>
                     <button type="button" (click)="removeRequirement(i)">x</button>
                 </div>
                 <button type="button" (click)="addRequirement()">+</button>

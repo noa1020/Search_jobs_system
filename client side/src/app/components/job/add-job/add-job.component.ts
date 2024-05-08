@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-job.component.scss']
 })
 export class AddJobComponent implements OnInit {
+  
   newJob: Job = {
     jobId: 0,
     jobName: '',
@@ -21,6 +22,7 @@ export class AddJobComponent implements OnInit {
     homeWorking: false
   };
   jobFields: JobField[] = [];
+  location: any;
 
   constructor(private jobFieldService: JobFieldService,
     private jobService: JobService
@@ -44,7 +46,6 @@ export class AddJobComponent implements OnInit {
       const isJobAdded = await this.jobService.addJob(this.newJob);
       if (isJobAdded) {
         alert("The job has been successfully added!");
-        this.router.navigate(['/home/jobs_list']);
       } else {
         alert("Error adding job");
       }
@@ -60,4 +61,8 @@ export class AddJobComponent implements OnInit {
   removeRequirement(index: number) {
     this.newJob.requirements.splice(index, 1);
   }
+  trackByFn(index: any, item: any) {
+    return index;
+  }
+  
 }
