@@ -18,8 +18,8 @@ export class SignupComponent implements OnInit {
     private authService: AuthService, private router: Router) {
     this.signupForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
       jobField: ['', Validators.required]
     }, { validator: this.checkPasswords });
   }

@@ -22,6 +22,8 @@ export class AuthService {
     return new Promise<boolean>((resolve) => {
       let flag = false;
       this.userService.getUser(username, password).subscribe((user: User | null) => {
+        console.log(user);
+        
         if (user !== null) {
           localStorage.setItem("user", JSON.stringify(user));
           flag = true;

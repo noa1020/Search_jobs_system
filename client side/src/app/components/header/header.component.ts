@@ -48,7 +48,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   onEditProfileClick() {
-    this.router.navigate(['/edit_user']);
+    this.showProfileOptions = !this.showProfileOptions;
+    this.router.navigate(['home/edit_user']);
   }
 
 

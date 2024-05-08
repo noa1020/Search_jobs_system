@@ -16,7 +16,7 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     getUser(userName: string, password: string): Observable<User | null> {
-        return this.http.get<User>(`this.userUrl/Login?userName=${encodeURIComponent(userName)}&password=${encodeURIComponent(password)}`)
+        return this.http.get<User>(`https://localhost:7231/User/Login?userName=${encodeURIComponent(userName)}&password=${encodeURIComponent(password)}`)
             .pipe(
                 catchError(error => {
                     if (error.status === 404) {
@@ -44,6 +44,7 @@ export class UserService {
         localStorage.setItem("user", JSON.stringify(user));
         this.userUpdated.next(user);
     }
+    
 
     addJobToUser(idJob: number): boolean {
         this.user = JSON.parse(localStorage.getItem("user") || '{}');
