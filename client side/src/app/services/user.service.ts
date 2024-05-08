@@ -10,13 +10,13 @@ import { json } from 'express';
 })
 
 export class UserService {
-
+    private userUrl = 'https://localhost:7231/User'
     userUpdated = new Subject<User>();
     user!: User;
     constructor(private http: HttpClient) { }
 
     getUser(userName: string, password: string): Observable<User | null> {
-        return this.http.get<User>(`https://localhost:7231/User/Login?userName=${encodeURIComponent(userName)}&password=${encodeURIComponent(password)}`)
+        return this.http.get<User>(`this.userUrl/Login?userName=${encodeURIComponent(userName)}&password=${encodeURIComponent(password)}`)
             .pipe(
                 catchError(error => {
                     if (error.status === 404) {
@@ -31,7 +31,7 @@ export class UserService {
 
     addUser(user: User): Observable<any> {
         if (user !== null) {
-            return this.http.post('https://localhost:7231/User', user).pipe(
+            return this.http.post(this.userUrl, user).pipe(
                 map(() => true),
                 catchError(error => of(error))
             );
@@ -40,7 +40,7 @@ export class UserService {
     }
 
     updateUser(user: User) {
-        this.http.put('https://localhost:7231/User', user).subscribe(res => { });
+        this.http.put(this.userUrl, user).subscribe(res => { });
         localStorage.setItem("user", JSON.stringify(user));
         this.userUpdated.next(user);
     }
