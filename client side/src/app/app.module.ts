@@ -5,12 +5,12 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/user/login/login.component';
-import { SignupComponent } from './components/user/signup/signup.component';
-import { UpdateUserComponent } from './components/user/update-user/update-user.component';
-import { JobListComponent } from './components/job/job-list/job-list.component';
-import { AddJobComponent } from './components/job/add-job/add-job.component';
-import { ShowJobComponent } from './components/job/show-job/show-job.component';
+import { LoginComponent } from './components/userComponents/login/login.component';
+import { SignupComponent } from './components/userComponents/signup/signup.component';
+import { UpdateUserComponent } from './components/userComponents/update-user/update-user.component';
+import { JobListComponent } from './components/jobComponents/job-list/job-list.component';
+import { AddJobComponent } from './components/jobComponents/add-job/add-job.component';
+import { ShowJobComponent } from './components/jobComponents/show-job/show-job.component';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { JobService } from './services/job.service';
 import { JobFieldService } from './services/jobField.service';
-import { AppliedJobsListComponent } from './components/job/applied-jobs-list/applied-jobs-list.component';
+import { AppliedJobsListComponent } from './components/jobComponents/applied-jobs-list/applied-jobs-list.component';
 import { JobCardDirective } from './directives/job-card.directive';
 
 @NgModule({

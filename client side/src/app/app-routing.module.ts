@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/user/login/login.component';
+import { LoginComponent } from './components/userComponents/login/login.component';
 import { AuthGuard } from './auth.guard';
-import { SignupComponent } from './components/user/signup/signup.component';
-import { AppliedJobsListComponent } from './components/job/applied-jobs-list/applied-jobs-list.component';
-import { JobListComponent } from './components/job/job-list/job-list.component';
-import { UpdateUserComponent } from './components/user/update-user/update-user.component';
-import { AddJobComponent } from './components/job/add-job/add-job.component';
+import { SignupComponent } from './components/userComponents/signup/signup.component';
+import { AppliedJobsListComponent } from './components/jobComponents/applied-jobs-list/applied-jobs-list.component';
+import { JobListComponent } from './components/jobComponents/job-list/job-list.component';
+import { UpdateUserComponent } from './components/userComponents/update-user/update-user.component';
+import { AddJobComponent } from './components/jobComponents/add-job/add-job.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
