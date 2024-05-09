@@ -80,20 +80,31 @@ Visual Studio Code for installation and runing.
 
 ### Download the Source Code:
 
-Clone the repository or download as a ZIP file.
+Clone the repository:
+```
+git clone https://github.com/noa1020/Search_jobs_system.git
+```
+Open the solution file in Visual Studio Code
 
 ### Client-Side Setup:
 
-1. Open the solution file in Visual Studio Code.
-2. Install dependencies: `npm install`.
-3. Start the client: `ng serve`.
+1. Start the client:
+```
+ng serve
+```
+
 
 ### Server-Side Setup:
 
-1. Open the solution file in Visual Studio Code.
-2. Configure database connection string.
-3. Run Entity Framework migrations: `dotnet ef database update`.
-4. Start the server: `dotnet run`.
+1. Configure database connection string.
+2. Run Entity Framework migrations:
+```
+dotnet ef database update
+```
+3. Start the server:
+```
+dotnet run
+```
 
 ### Accessing the Application:
 
