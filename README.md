@@ -2,8 +2,7 @@
 
 ## System Description
 
-The Search Jobs System is a comprehensive platform designed to connect job seekers with potential job opportunities based on their skills, experience, and preferences. By leveraging advanced search algorithms and filters, this system provides users with a personalized and efficient way to browse through a vast array of job listings.
-
+The job search system is a sophisticated platform carefully designed to connect job seekers with ideal vacancies that match their skill sets. Using advanced search algorithms and precise filters, this system offers users a tailored and efficient approach to researching a variety of job offers and submitting resumes. In addition, it allows users to post jobs, giving them the opportunity to attract potential candidates and fill vacancies.
 ## Table of Contents
 - [System Features](#system-features)
 - [System Architecture](#system-architecture)
@@ -19,7 +18,7 @@ The Search Jobs System is a comprehensive platform designed to connect job seeke
 - **Job Search:** Users can easily search for jobs by location, and job type.
 - **Sending a CV:** Users can send resumes for jobs they are interested in.
 - **Application Tracking:** The system allows users to track their job applications, and display the jobs to which they have sent resumes and to which they have applied.
-- **Job posting:**  Users have the ability to post job listings, giving them the opportunity to attract potential candidates and fill job vacancies..
+- **Job posting:**  Users have the ability to post jobs, giving them the opportunity to attract potential candidates and fill job vacancies..
 - **Mobile Compatibility:** The Search Jobs System is optimized for mobile devices, ensuring a seamless user experience on smartphones and tablets.
 
 ## System Architecture
