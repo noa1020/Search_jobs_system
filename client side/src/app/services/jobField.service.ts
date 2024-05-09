@@ -18,10 +18,7 @@ export class JobFieldService {
         if (this.jobFieldList.length === 0) {
             return this.getJobFieldsFromServer();
         } else {
-            return new Observable(observer => {
-                observer.next(this.jobFieldList);
-                observer.complete();
-            });
+            return of(this.jobFieldList);
         }
     }
 
@@ -35,7 +32,7 @@ export class JobFieldService {
     }
     
     getJobFieldById(jobFieldId: number): Observable<JobField | undefined> {
-        return this.getJobFields().pipe(
+            return this.getJobFields().pipe(
             map((jobFields: JobField[]) => jobFields.find(jobField => jobField.jobFieldId === jobFieldId))
         );
     }

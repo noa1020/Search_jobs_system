@@ -25,17 +25,21 @@ export class HeaderComponent implements OnInit {
     this.CVsNumber = this.user.cVsSentCount;
     this.userService.userUpdated.subscribe((updatedUser: User) => {
       this.CVsNumber = updatedUser.cVsSentCount;
+      this.user = updatedUser;
+      this.getJobFieldDetails();
     });
     this.getJobFieldDetails();
   }
 
   getJobFieldDetails() {
-    this.jobFieldService.getJobFieldById(this.user.jobFieldId).subscribe((jobField: JobField | undefined) => {
-      this.jobFieldName = jobField?.jobFieldName;
-      this.jobField = jobField
-    });
+    if (this.user.jobFieldId) {
+      this.jobFieldService.getJobFieldById(this.user.jobFieldId).subscribe((jobField: JobField | undefined) => {
+        this.jobFieldName = jobField?.jobFieldName;
+        this.jobField = jobField
+      });
+    }
   }
-
+  
   onJobFieldLinkClick(): void {
     this.router.navigate(['/home'], { queryParams: { fieldName: this.jobFieldName } });
   }

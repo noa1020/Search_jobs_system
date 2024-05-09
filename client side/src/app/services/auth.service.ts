@@ -22,8 +22,6 @@ export class AuthService {
     return new Promise<boolean>((resolve) => {
       let flag = false;
       this.userService.getUser(username, password).subscribe((user: User | null) => {
-        console.log(user);
-        
         if (user !== null) {
           localStorage.setItem("user", JSON.stringify(user));
           flag = true;
@@ -36,11 +34,12 @@ export class AuthService {
   async signUp(username: string, password: string, jobFieldId: number): Promise<boolean> {
     this.user.userName = username;
     this.user.password = password;
-    this.user.jobFieldId = jobFieldId;
+    this.user.jobFieldId =parseInt(jobFieldId.toString());
     return new Promise<boolean>((resolve, reject) => {
       this.userService.addUser(this.user).subscribe(
         (res: any) => {
           if (res === true) {
+            localStorage.setItem("user", JSON.stringify(this.user));
             resolve(true);
           } else if (res === false) {
             resolve(false);

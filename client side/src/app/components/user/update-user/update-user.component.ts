@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
   templateUrl: './update-user.component.html',
   styleUrl: './update-user.component.scss'
 })
-export class UpdateUserComponent  implements OnInit {
+export class UpdateUserComponent implements OnInit {
   editUserForm: FormGroup;
   jobFields: JobField[] = [];
-  currentUser!:User;
+  currentUser!: User;
   constructor(
     private formBuilder: FormBuilder,
     private jobFieldService: JobFieldService,
@@ -46,20 +46,22 @@ export class UpdateUserComponent  implements OnInit {
     return (pass === confirmPass || !confirmPass) ? null : { notSame: true }
   }
 
-  update(){
+  async update() {
     if (this.editUserForm.valid) {
       try {
-        this.currentUser.userName=this.editUserForm.value.username;
-        this.currentUser.password=this.editUserForm.value.password;
+        this.currentUser.password = this.editUserForm.value.password;
         this.currentUser.jobFieldId = parseInt(this.editUserForm.value.jobField);
-        this.userService.updateUser(this.currentUser);
-        if (this.currentUser) {
+        const isUserUpdated = await this.userService.updateUser(this.currentUser);
+        if (isUserUpdated) {
           this.router.navigate(['/home']);
         } else {
           alert("Error update user");
         }
       } catch (error: any) {
-        alert(error['errorMessage']);
+        if (error['status'] == 400)
+          this.router.navigate(['/login']);
+        else
+          alert(error);
       }
     }
   }

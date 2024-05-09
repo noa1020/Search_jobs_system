@@ -39,12 +39,43 @@ export class UserService {
         return of(false);
     }
 
-    updateUser(user: User) {
-        this.http.put(this.userUrl, user).subscribe(res => { });
-        localStorage.setItem("user", JSON.stringify(user));
-        this.userUpdated.next(user);
+    updateUserInServer(user: User): Observable<any> {
+        if (user !== null) {
+            return this.http.put(this.userUrl, user).pipe(
+                tap(() => {
+                    console.log(user);
+                }),
+                map(() => true),
+                catchError(error => of(error))
+            );
+        }
+        return of(false);
     }
-    
+    async updateUser(user: User): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+            this.updateUserInServer(user).subscribe(
+                (res: any) => {
+                    if (res === true) {
+                        localStorage.setItem("user", JSON.stringify(user));
+                        this.userUpdated.next(user);    
+                        resolve(true);
+                    } else if (res === false) {
+                        resolve(false);
+                    }
+                    else {
+                        if (res['status'] == 400)
+                            localStorage.removeItem("user");
+                        reject(res);
+                    }
+                },
+                (error) => {
+                    reject(error);
+                }
+            );
+        });
+    }
+
+
 
     addJobToUser(idJob: number): boolean {
         this.user = JSON.parse(localStorage.getItem("user") || '{}');

@@ -3,7 +3,7 @@
     <form [formGroup]="editUserForm" (ngSubmit)="update()">
         <div>
             <label for="username">User name:</label>
-            <input id="username" type="text" formControlName="username" required pattern="^[a-zA-Z0-9\s+\-\/']+$">
+            <input id="username" type="text" [(ngModel)]="currentUser.userName" formControlName="username" required pattern="^[a-zA-Z0-9\s+\-\/']+$">
             <div
                 *ngIf="editUserForm.controls['username']?.invalid && (editUserForm.controls['username'].dirty || editUserForm.controls['username'].touched)">
                 <span style="color: red;">Please enter valid username.</span>
@@ -12,7 +12,7 @@
 
         <div>
             <label for="fieldId">Select Field:</label>
-            <select id="fieldId" formControlName="jobField" required>
+            <select id="fieldId" [(ngModel)]="currentUser.jobFieldId" formControlName="jobField" required>
                 <option *ngFor="let jobField of jobFields" [value]="jobField.jobFieldId">{{ jobField.jobFieldName }}
                 </option>
             </select>
@@ -20,7 +20,7 @@
 
         <div>
             <label for="password">Password:</label>
-            <input id="password" type="password" formControlName="password" required pattern="^\S{8,}$">
+            <input id="password" type="password" [(ngModel)]="currentUser.password" formControlName="password" required pattern="^\S{8,}$">
             <div
                 *ngIf="editUserForm.controls['password']?.invalid && (editUserForm.controls['password'].dirty || editUserForm.controls['password'].touched)">
                 <span style="color: red;">Password must be at least 8 characters long and not contain spaces.</span>

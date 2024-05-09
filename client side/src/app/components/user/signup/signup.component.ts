@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit {
       try {
         const isSignedUp = await this.authService.signUp(this.signupForm.value.username, this.signupForm.value.password, this.signupForm.value.jobField);
         if (isSignedUp) {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/home']);
         } else {
           alert("Error adding user");
         }
